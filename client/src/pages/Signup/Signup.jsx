@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaGoogle, FaGithub, FaTwitter } from "react-icons/fa";
+import Signupbg from "../../assets/SignupBG.jpg"
 
 export default function SignupPage() {
     const [form, setForm] = useState({ fullname: "", email: "", password: "" });
@@ -37,126 +40,125 @@ export default function SignupPage() {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-            <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-                <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-indigo-500/20 blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-fuchsia-500/10 blur-3xl" />
-            </div>
+        <main
+            className="pt-36 pb-20 flex items-center justify-center bg-cover bg-center bg-no-repeat px-4"
+            style={{
+                backgroundImage: `url(${Signupbg})`,
+            }}
+        >
+            <div className="w-full max-w-md backdrop-blur-lg bg-white/30 border border-white/40 rounded-2xl shadow-xl p-8">
+                <h1 className="text-3xl font-bold text-black text-center mb-2 drop-shadow-md">Create Account</h1>
+                <p className="text-black/50 text-center mb-6">Sign up to get started</p>
 
-            <div className="w-full max-w-md">
-                <div className="backdrop-blur-xl bg-white/10 border border-white/10 rounded-2xl shadow-2xl p-8 animate-[fadeIn_0.4s_ease-out]">
-                    <h1 className="text-3xl font-semibold text-white text-center mb-2">Create Account</h1>
-                    <p className="text-slate-300 text-center mb-8">Sign up to get started</p>
-
-                    <form onSubmit={onSubmit} className="space-y-6">
-                        {/* Full Name */}
-                        <div>
-                            <label htmlFor="fullname" className="block text-sm font-medium text-slate-200 mb-1">
-                                Full Name
-                            </label>
-                            <input
-                                id="fullname"
-                                type="text"
-                                name="fullname"
-                                value={form.fullname}
-                                onChange={onChange}
-                                className={`w-full rounded-lg bg-white/5 text-white placeholder:text-slate-400 border transition
-                                    ${errors.fullname ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-indigo-500"}
-                                    focus:outline-none focus:ring-2 focus:ring-indigo-500/20 px-4 py-2.5`}
-                                placeholder="John Doe"
-                            />
-                            {errors.fullname && <p className="mt-1 text-sm text-red-400">{errors.fullname}</p>}
-                        </div>
-
-                        {/* Email */}
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-slate-200 mb-1">
-                                Email
-                            </label>
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={onChange}
-                                className={`w-full rounded-lg bg-white/5 text-white placeholder:text-slate-400 border transition
-                                    ${errors.email ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-indigo-500"}
-                                    focus:outline-none focus:ring-2 focus:ring-indigo-500/20 px-4 py-2.5`}
-                                placeholder="you@example.com"
-                            />
-                            {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
-                        </div>
-
-                        {/* Password */}
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-slate-200 mb-1">
-                                Password
-                            </label>
-                            <div className="relative">
-                                <input
-                                    id="password"
-                                    type={showPwd ? "text" : "password"}
-                                    name="password"
-                                    value={form.password}
-                                    onChange={onChange}
-                                    className={`w-full rounded-lg bg-white/5 text-white placeholder:text-slate-400 border transition
-                                        ${errors.password ? "border-red-500 focus:border-red-500" : "border-white/10 focus:border-indigo-500"}
-                                        focus:outline-none focus:ring-2 focus:ring-indigo-500/20 px-4 py-2.5 pr-12`}
-                                    placeholder="••••••••"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPwd((s) => !s)}
-                                    className="absolute inset-y-0 right-0 px-3 text-slate-300 hover:text-white"
-                                >
-                                    {showPwd ? "🙈" : "👁️"}
-                                </button>
-                            </div>
-                            {errors.password && <p className="mt-1 text-sm text-red-400">{errors.password}</p>}
-                        </div>
-
-                        {/* Submit */}
-                        <button
-                            type="submit"
-                            disabled={submitting}
-                            className="w-full rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-medium py-2.5 transition"
-                        >
-                            {submitting ? "Signing up..." : "Sign Up"}
-                        </button>
-                    </form>
-
-                    {/* Social Login */}
-                    <div className="flex items-center my-6">
-                        <span className="h-px flex-1 bg-white/10" />
-                        <span className="px-3 text-xs uppercase tracking-wider text-slate-400">or</span>
-                        <span className="h-px flex-1 bg-white/10" />
+                <form onSubmit={onSubmit} className="space-y-5">
+                    {/* Full Name */}
+                    <div>
+                        <label htmlFor="fullname" className="block text-sm font-medium text-black mb-1">
+                            Full Name
+                        </label>
+                        <input
+                            id="fullname"
+                            type="text"
+                            name="fullname"
+                            value={form.fullname}
+                            onChange={onChange}
+                            className={`w-full rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 border 
+                            ${errors.fullname ? "border-red-400" : "border-gray-300 focus:border-blue-500"} 
+                            focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2.5`}
+                            placeholder="John Doe"
+                        />
+                        {errors.fullname && <p className="mt-1 text-sm text-red-500">{errors.fullname}</p>}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-3">
-                        <SocialButton label="Google" onClick={() => alert("Google")} />
-                        <SocialButton label="GitHub" onClick={() => alert("GitHub")} />
-                        <SocialButton label="Twitter" onClick={() => alert("Twitter")} />
+                    {/* Email */}
+                    <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-black mb-1">
+                            Email
+                        </label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={onChange}
+                            className={`w-full rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 border 
+                            ${errors.email ? "border-red-400" : "border-gray-300 focus:border-blue-500"} 
+                            focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2.5`}
+                            placeholder="you@example.com"
+                        />
+                        {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
                     </div>
 
-                    <p className="mt-8 text-center text-sm text-slate-400">
-                        Already have an account?{" "}
-                        <button className="text-indigo-400 hover:underline" onClick={() => alert("Go to login")}>
-                            Login
-                        </button>
-                    </p>
+                    {/* Password */}
+                    <div>
+                        <label htmlFor="password" className="block text-sm font-medium text-black mb-1">
+                            Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                id="password"
+                                type={showPwd ? "text" : "password"}
+                                name="password"
+                                value={form.password}
+                                onChange={onChange}
+                                className={`w-full rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 border 
+                                ${errors.password ? "border-red-400" : "border-gray-300 focus:border-blue-500"} 
+                                focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2.5 pr-12`}
+                                placeholder="••••••••"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPwd((s) => !s)}
+                                className="absolute inset-y-0 right-0 px-3 text-gray-600 hover:text-gray-900 cursor-pointer"
+                            >
+                                {showPwd ? "🙈" : "👁️"}
+                            </button>
+                        </div>
+                        {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
+                    </div>
+
+                    {/* Submit */}
+                    <button
+                        type="submit"
+                        disabled={submitting}
+                        className="w-full rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 transition focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                    >
+                        {submitting ? "Signing up..." : "Sign Up"}
+                    </button>
+                </form>
+
+                {/* Divider */}
+                <div className="flex items-center my-6">
+                    <span className="h-px flex-1 bg-black/30" />
+                    <span className="px-3 text-xs uppercase tracking-wider text-black">or</span>
+                    <span className="h-px flex-1 bg-black/30" />
                 </div>
+
+                {/* Social Buttons */}
+                <div className="grid grid-cols-3 gap-3">
+                    <SocialButton icon={<FaGoogle />} label="Google" onClick={() => alert("Google")} />
+                    <SocialButton icon={<FaGithub />} label="GitHub" onClick={() => alert("GitHub")} />
+                    <SocialButton icon={<FaTwitter />} label="Twitter" onClick={() => alert("Twitter")} />
+                </div>
+
+                <p className="mt-8 text-center text-sm text-black">
+                    Already have an account?{" "}
+                    <Link to='/login' className="text-blue-500 hover:underline cursor-pointer">
+                        Login
+                    </Link>
+                </p>
             </div>
         </main>
     );
 }
 
-function SocialButton({ label, onClick }) {
+function SocialButton({ icon, label, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="text-slate-200 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg py-2 text-sm transition"
+            className="flex items-center justify-center gap-2 text-gray-900 bg-white/70 hover:bg-white border border-white/30 rounded-lg py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-blue-200 cursor-pointer"
         >
-            {label}
+            {icon} {label}
         </button>
     );
 }

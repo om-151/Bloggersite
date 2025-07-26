@@ -118,7 +118,7 @@ const TestimonialCard = ({ t }) => {
 
 const Testimonials = () => {
     return (
-        <section id="testimonials" className="bg-gray-50 py-20">
+        <section id="testimonials" className="bg-gray-100 py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-2xl text-center">

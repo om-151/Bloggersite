@@ -1,12 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import suraj from "../../assets/s.jpg"
+import suraj from "../../assets/Suraj.jpg"
+import om from "../../assets/Om.jpg"
 
 const teamMembers = [
     {
         name: "Om Sonani",
         role: "Founder & Writer",
-        image: suraj,
+        image: om,
     },
     {
         name: "Suraj Sutariya",
@@ -37,7 +38,7 @@ const AboutUs = () => {
                         transition={{ duration: 0.8 }}
                         className="text-4xl md:text-6xl font-bold text-white text-center"
                     >
-                        About Our Blog
+                        About Blogger
                     </motion.h1>
                 </div>
             </div>
@@ -60,6 +61,37 @@ const AboutUs = () => {
                     and entertain our readers.
                 </p>
             </motion.div>
+
+            {/* Team Section */}
+            <div className="max-w-6xl mx-auto px-6 mt-16">
+                <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+                    Meet Blogger Team
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    {teamMembers.map((member, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            viewport={{ once: true }}
+                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
+                        >
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                className="w-full h-56 object-cover"
+                            />
+                            <div className="p-5 text-center">
+                                <h3 className="text-xl font-semibold text-gray-800">
+                                    {member.name}
+                                </h3>
+                                <p className="text-gray-500">{member.role}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
 
             {/* Mission & Vision Section */}
             <section className="bg-white py-16 px-6">
@@ -98,37 +130,6 @@ const AboutUs = () => {
                     </motion.div>
                 </div>
             </section>
-
-            {/* Team Section */}
-            <div className="max-w-6xl mx-auto px-6 mt-16">
-                <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-                    Meet Our Team
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {teamMembers.map((member, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
-                            viewport={{ once: true }}
-                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
-                        >
-                            <img
-                                src={member.image}
-                                alt={member.name}
-                                className="w-full h-56 object-cover"
-                            />
-                            <div className="p-5 text-center">
-                                <h3 className="text-xl font-semibold text-gray-800">
-                                    {member.name}
-                                </h3>
-                                <p className="text-gray-500">{member.role}</p>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
         </div>
     );
 };

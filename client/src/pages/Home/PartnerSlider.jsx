@@ -11,7 +11,7 @@ const PartnerSlider = () => {
     const repeatedLogos = Array(REPEAT_COUNT).fill(logos).flat();
 
     return (
-        <div className="w-full bg-gray-50 py-10 overflow-hidden">
+        <div className="w-full bg-gray-100 py-10 overflow-hidden">
             <h2 className="text-3xl font-bold text-center mb-8">Our Partners</h2>
 
             {/* Scrolling wrapper */}

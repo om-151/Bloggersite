@@ -8,9 +8,9 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Logo + About */}
                 <div>
-                    <h2 className="text-gray-900 text-2xl font-bold mb-4">YourBrand</h2>
+                    <h2 className="text-gray-900 text-2xl font-bold mb-4">Blogger</h2>
                     <p className="text-sm leading-relaxed">
-                        YourBrand is dedicated to delivering high-quality services and
+                        Blogger is dedicated to delivering high-quality services and
                         solutions. We create innovative digital experiences that help you
                         succeed.
                     </p>
@@ -90,7 +90,7 @@ const Footer = () => {
             {/* Bottom Section */}
             <div className="border-t border-gray-200">
                 <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-4 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600">
-                    <p>© {new Date().getFullYear()} YourBrand. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} Blogger. All rights reserved.</p>
                     <div className="mt-2 sm:mt-0 space-x-4">
                         <a href="#" className="hover:text-blue-600 transition">Privacy Policy</a>
                         <a href="#" className="hover:text-blue-600 transition">Terms of Service</a>
