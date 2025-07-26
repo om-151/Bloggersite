@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.scrolling-track:hover {
+    animation-play-state: paused;
+}
