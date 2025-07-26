@@ -10,13 +10,15 @@ const Navbar = () => {
         { name: "Home", href: "/" },
         { name: "Blogs", href: "/blogs" },
         { name: "About", href: "/about" },
+        { name: "Login", href: "/login" },
+        { name: "Sign up", href: "/signup" },
     ];
 
     return (
         <header className="w-full shadow-md fixed top-0 left-0 bg-white z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
                 {/* Logo */}
-                <div className="text-2xl font-bold text-blue-600">MyBlog</div>
+                <div className="text-2xl font-bold text-blue-600">Blogger</div>
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex space-x-8">
