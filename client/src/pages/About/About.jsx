@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import suraj from "../../assets/Suraj.jpg"
 import om from "../../assets/Om.jpg"
+import zeel from "../../assets/zeel.jpg"
 
 const teamMembers = [
     {
@@ -17,7 +18,7 @@ const teamMembers = [
     {
         name: "Zeel Savani",
         role: "Editor",
-        image: suraj,
+        image: zeel,
     },
 ];
 
