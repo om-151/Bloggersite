@@ -32,8 +32,32 @@ export default function SignupPage() {
 
         setSubmitting(true);
         try {
-            await new Promise((r) => setTimeout(r, 1200));
-            alert("Signup successful! " + JSON.stringify(form, null, 2));
+            const res = await fetch("http://localhost:3000/api/auth/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: form.fullname,
+                    email: form.email,
+                    password: form.password,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert(data.message || "Signup failed");
+                return;
+            }
+
+            localStorage.setItem("token", data.token);
+
+            alert("Signup successful!");
+            window.location.href = "/";
+        } catch (err) {
+            alert("Something went wrong!");
+            console.error(err);
         } finally {
             setSubmitting(false);
         }

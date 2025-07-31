@@ -31,8 +31,31 @@ export default function LoginPage() {
 
         setSubmitting(true);
         try {
-            await new Promise((r) => setTimeout(r, 1200));
-            alert(JSON.stringify(form, null, 2));
+            const res = await fetch("http://localhost:3000/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: form.email,
+                    password: form.password,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                alert(data.message || "Login failed");
+                return;
+            }
+
+            localStorage.setItem("token", data.token);
+
+            alert("Login successful!");
+            window.location.href = "/";
+        } catch (err) {
+            alert("Something went wrong!");
+            console.error(err);
         } finally {
             setSubmitting(false);
         }
