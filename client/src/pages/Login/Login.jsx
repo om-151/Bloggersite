@@ -50,6 +50,7 @@ export default function LoginPage() {
             }
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
 
             alert("Login successful!");
             window.location.href = "/";

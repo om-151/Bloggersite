@@ -8,19 +8,27 @@ import Blogs from './pages/Blogs/Blogs'
 import { Routes, Route } from "react-router-dom";
 import AboutUs from './pages/About/About'
 import Signup from './pages/Signup/Signup'
+import CreateBlog from './pages/CreateBlog/CreateBlog'
+import Blogdetails from './pages/BlogDetails/BlogDetails'
+import EditBlog from './pages/CreateBlog/EditBlog'
+import CursorFollower from './components/CursorFollower/CursorFollower'
 
 function App() {
 
   return (
     <>
-      <Navbar/>
-       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
+      <CursorFollower />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/create" element={<CreateBlog />} />
+        <Route path="/blogs/:id" element={<Blogdetails />} />
+        <Route path="/edit/:id" element={<EditBlog />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
       <Footer />
     </>
   )

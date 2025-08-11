@@ -52,6 +52,7 @@ export default function SignupPage() {
             }
 
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
 
             alert("Signup successful!");
             window.location.href = "/";
