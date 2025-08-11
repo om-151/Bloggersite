@@ -21,7 +21,13 @@ export default function BlogList() {
         fetchBlogs();
     }, []);
 
-    if (loading) return <p className="text-center mt-10 text-gray-600">Loading blogs...</p>;
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">

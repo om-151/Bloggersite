@@ -95,7 +95,7 @@ export default function BlogCard({ blog }) {
 
                 <button
                     onClick={() => navigate(`/blogs/${_id}`)}
-                    className="mt-2 w-fit text-sm text-blue-600 hover:underline"
+                    className="mt-2 w-fit text-sm text-blue-600 hover:underline cursor-pointer"
                 >
                     Read More →
                 </button>

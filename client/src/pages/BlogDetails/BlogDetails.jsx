@@ -34,14 +34,26 @@ export default function BlogPage() {
         });
     };
 
-    if (loading) return <div className="text-center py-20 text-lg">Loading blog...</div>;
-    if (error) return <div className="text-center py-20 text-red-600">{error}</div>;
+    // Loader
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
+
+    // Error
+    if (error) {
+        return <div className="text-center py-20 text-red-600">{error}</div>;
+    }
+
     if (!blog) return null;
 
     return (
         <div className="w-full mt-16">
             {/* Full-width Cover Image */}
-            <div className="w-full h-[400px] overflow-hidden">
+            <div className="w-full h-[500px] overflow-hidden">
                 <img
                     src={
                         blog.image?.startsWith("data:image")
@@ -60,7 +72,12 @@ export default function BlogPage() {
                 </h1>
 
                 <div className="text-sm text-gray-500 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <span>By <span className="font-medium text-gray-700">{blog.user?.name || "Unknown Author"}</span></span>
+                    <span>
+                        By{" "}
+                        <span className="font-medium text-gray-700">
+                            {blog.user?.name || "Unknown Author"}
+                        </span>
+                    </span>
                     <span>{formatDate(blog.createdAt)}</span>
                 </div>
 
