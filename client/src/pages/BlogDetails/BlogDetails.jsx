@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./BlogContent.css";
 
 export default function BlogPage() {
     const { id } = useParams();
@@ -55,11 +56,7 @@ export default function BlogPage() {
             {/* Full-width Cover Image */}
             <div className="w-full h-[500px] overflow-hidden">
                 <img
-                    src={
-                        blog.image?.startsWith("data:image")
-                            ? blog.image
-                            : `data:image/jpeg;base64,${blog.image}`
-                    }
+                    src={`http://localhost:3000/uploads/${blog.image}`}
                     alt="Blog cover"
                     className="w-full h-full object-cover"
                 />
@@ -67,22 +64,22 @@ export default function BlogPage() {
 
             {/* Content Section */}
             <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-0 py-12">
-                <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 className="text-4xl font-semibold text-purple-800 leading-tight mb-4">
                     {blog.title}
                 </h1>
 
-                <div className="text-sm text-gray-500 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div className="text-sm text-purple-800 mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <span>
                         By{" "}
-                        <span className="font-medium text-gray-700">
+                        <span className="font-medium text-[#6438C0]">
                             {blog.user?.name || "Unknown Author"}
                         </span>
                     </span>
-                    <span>{formatDate(blog.createdAt)}</span>
+                    <span className="text-[#6438C0]">{formatDate(blog.createdAt)}</span>
                 </div>
 
                 <article
-                    className="prose max-w-none prose-lg prose-slate prose-headings:text-gray-800 prose-img:rounded-lg prose-a:text-blue-600 hover:prose-a:underline"
+                    className="blog-content"
                     dangerouslySetInnerHTML={{ __html: blog.description }}
                 />
             </section>

@@ -10,6 +10,7 @@ import Blog1 from "../../assets/Hero/BlogSlider-1.jpg";
 import Blog2 from "../../assets/Hero/BlogSlider-2.jpg";
 import Blog3 from "../../assets/Hero/BlogSlider-3.jpg";
 import Testimonials from "./Testimonials";
+import SampleBlogs from "./SampleBlogs";
 
 const images = [Blog1, Blog2, Blog3];
 
@@ -52,6 +53,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <SampleBlogs />
             <PartnerSlider />
             <Testimonials />
         </div>

@@ -64,7 +64,7 @@ const AboutUs = () => {
             </motion.div>
 
             {/* Team Section */}
-            <div className="max-w-6xl mx-auto px-6 mt-16">
+            <div className="max-w-6xl mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
                     Meet Blogger Team
                 </h2>
@@ -76,7 +76,7 @@ const AboutUs = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                             viewport={{ once: true }}
-                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform"
+                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform hover:ring-1 hover:ring-[#6438C0]"
                         >
                             <img
                                 src={member.image}
@@ -84,7 +84,7 @@ const AboutUs = () => {
                                 className="w-full h-56 object-cover"
                             />
                             <div className="p-5 text-center">
-                                <h3 className="text-xl font-semibold text-gray-800">
+                                <h3 className="text-xl font-semibold text-[#6438C0]">
                                     {member.name}
                                 </h3>
                                 <p className="text-gray-500">{member.role}</p>
@@ -103,9 +103,9 @@ const AboutUs = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="bg-blue-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition"
+                        className="bg-purple-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition"
                     >
-                        <h3 className="text-2xl font-bold text-blue-600 mb-4">Our Mission</h3>
+                        <h3 className="text-2xl font-bold text-[#6438C0] mb-4">Our Mission</h3>
                         <p className="text-gray-600 leading-relaxed">
                             Our mission is to create a platform that delivers valuable,
                             insightful, and inspirational content to our readers. We aim to
@@ -120,9 +120,9 @@ const AboutUs = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="bg-green-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition"
+                        className="bg-purple-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition"
                     >
-                        <h3 className="text-2xl font-bold text-green-600 mb-4">Our Vision</h3>
+                        <h3 className="text-2xl font-bold text-[#6438C0] mb-4">Our Vision</h3>
                         <p className="text-gray-600 leading-relaxed">
                             Our vision is to build a community of curious minds who seek
                             knowledge and inspiration. We strive to be the go-to platform for

@@ -12,11 +12,13 @@ import CreateBlog from './pages/CreateBlog/CreateBlog'
 import Blogdetails from './pages/BlogDetails/BlogDetails'
 import EditBlog from './pages/CreateBlog/EditBlog'
 import CursorFollower from './components/CursorFollower/CursorFollower'
+import ScrollToTop from './components/CursorFollower/ScrollToTop'
 
 function App() {
 
   return (
     <>
+      <ScrollToTop />
       <CursorFollower />
       <Navbar />
       <Routes>

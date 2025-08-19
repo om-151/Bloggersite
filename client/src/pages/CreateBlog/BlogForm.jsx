@@ -4,6 +4,7 @@ import "react-quill-new/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
+import toast from "react-hot-toast";
 
 export default function BlogForm({ blogId = null, isEdit = false }) {
     const [title, setTitle] = useState("");
@@ -34,20 +35,14 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
         }
     };
 
-    const toBase64 = (file) =>
-        new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = (error) => reject(error);
-        });
-
     const validate = () => {
         const newErrors = {};
         if (!title.trim()) newErrors.title = "Title is required";
-        if (!description || description === "<p><br></p>") newErrors.description = "Description is required";
+        if (!description || description === "<p><br></p>")
+            newErrors.description = "Description is required";
         if (!image && !isEdit) newErrors.image = "Image is required";
-        if (tags.length === 0 || (tags.length === 1 && tags[0] === "")) newErrors.tags = "At least one tag is required";
+        if (tags.length === 0 || (tags.length === 1 && tags[0] === ""))
+            newErrors.tags = "At least one tag is required";
         return newErrors;
     };
 
@@ -59,26 +54,17 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
             return;
         }
 
-        let base64Image = preview; // use existing preview as fallback
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        tags.forEach((tag) => formData.append("tags[]", tag));
         if (image) {
-            try {
-                base64Image = await toBase64(image);
-            } catch (err) {
-                console.error("Image conversion failed:", err);
-                return;
-            }
+            formData.append("image", image);
         }
-
-        const blogData = {
-            title,
-            description,
-            image: base64Image,
-            tags,
-        };
 
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("User is not authenticated!");
+            toast.error("You must be logged in to create or edit a blog post.");
             return;
         }
 
@@ -88,25 +74,23 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
                 {
                     method: isEdit ? "PUT" : "POST",
                     headers: {
-                        "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body: JSON.stringify(blogData),
+                    body: formData,
                 }
             );
 
             const result = await response.json();
             if (!response.ok) throw new Error(result.message || "Something went wrong");
 
-            alert(isEdit ? "Blog updated successfully!" : "Blog created successfully!");
+            toast.success(isEdit ? "Blog updated successfully!" : "Blog created successfully!");
             navigate("/blogs");
         } catch (error) {
             console.error("Error submitting blog:", error.message);
-            alert(error.message);
+            toast.error(error.message || "Failed to submit blog");
         }
     };
 
-    // Fetch blog data if editing
     useEffect(() => {
         const fetchBlog = async () => {
             if (isEdit && blogId) {
@@ -116,7 +100,9 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
                     setTitle(data.title || "");
                     setDescription(data.description || "");
                     setTags(data.tags || []);
-                    setPreview(data.image || null);
+                    if (data.imageUrl) {
+                        setPreview(data.imageUrl);
+                    }
                 } catch (err) {
                     console.error("Failed to load blog for editing", err);
                 }
@@ -127,31 +113,33 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
     }, [isEdit, blogId]);
 
     return (
-        <div className="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-            <h2 className="text-3xl font-semibold my-6 text-center text-gray-800">
+        <div className="max-w-3xl mx-auto mt-20 mb-6 p-8 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200">
+            <h2 className="text-4xl font-bold mb-8 text-center text-[#6438C0]">
                 {isEdit ? "Edit Blog Post" : "Create Blog Post"}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Title */}
                 <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-semibold mb-2">
                         Title <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className={`w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 ${errors.title ? "border-red-500 ring-red-300" : "border-gray-300 focus:ring-blue-500"
+                        className={`w-full border rounded-xl px-4 py-3 shadow-sm transition focus:outline-none focus:ring-2 ${errors.title
+                            ? "border-red-500 ring-red-300"
+                            : "border-gray-300 focus:ring-[#6438C0]"
                             }`}
-                        placeholder="Enter blog title"
+                        placeholder="Enter an engaging blog title..."
                     />
                     {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
                 </div>
 
                 {/* Description */}
                 <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-semibold mb-2">
                         Description <span className="text-red-500">*</span>
                     </label>
                     <ReactQuill
@@ -160,31 +148,40 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
                         value={description}
                         onChange={setDescription}
                         modules={modules}
-                        className="bg-white"
+                        className="bg-white rounded-lg"
                     />
-                    {errors.description && <p className="text-red-500 text-sm mt-2">{errors.description}</p>}
+                    {errors.description && (
+                        <p className="text-red-500 text-sm mt-2">{errors.description}</p>
+                    )}
                 </div>
 
                 {/* Image Upload */}
                 <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-semibold mb-2">
                         Cover Image {!isEdit && <span className="text-red-500">*</span>}
                     </label>
                     <input
                         type="file"
                         accept="image/*"
                         onChange={handleImageChange}
-                        className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                        className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 
+            file:rounded-xl file:border-0 file:font-semibold 
+            file:bg-[#6438C0]/10 file:text-[#6438C0] 
+            hover:file:bg-[#6438C0]/20 cursor-pointer"
                     />
                     {preview && (
-                        <img src={preview} alt="Preview" className="mt-4 w-full h-64 object-cover rounded-md shadow-sm" />
+                        <img
+                            src={preview}
+                            alt="Preview"
+                            className="mt-4 w-full h-64 object-cover rounded-xl shadow-md"
+                        />
                     )}
                     {errors.image && <p className="text-red-500 text-sm mt-2">{errors.image}</p>}
                 </div>
 
-                {/* Tags Input */}
+                {/* Tags */}
                 <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-gray-700 font-semibold mb-2">
                         Tags <span className="text-red-500">*</span>
                     </label>
                     <ReactTagInput
@@ -199,7 +196,7 @@ export default function BlogForm({ blogId = null, isEdit = false }) {
                 <div className="text-center">
                     <button
                         type="submit"
-                        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200 cursor-pointer"
+                        className="px-8 py-3 rounded-xl font-semibold shadow-md text-white bg-[#6438C0] hover:bg-purple-800 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     >
                         {isEdit ? "Update Post" : "Create Post"}
                     </button>

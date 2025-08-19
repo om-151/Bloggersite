@@ -21,7 +21,7 @@ const Counter = ({ target, duration = 2000, title, suffix = "+" }) => {
 
     return (
         <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-            <h2 className="text-4xl font-bold text-blue-600 flex items-start">
+            <h2 className="text-4xl font-bold text-[#6438C0] flex items-start">
                 <span className="inline-flex items-center">
                     <span>{count}</span>
                     {count === target && (

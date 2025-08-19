@@ -30,12 +30,27 @@ export default function BlogList() {
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-20">
-            {blogs.length > 0 ? (
-                blogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
-            ) : (
-                <p className="col-span-full text-center text-gray-500">No blogs found.</p>
-            )}
+        <div className="max-w-6xl mx-auto p-6 mt-16">
+            {/* Heading & Subheading */}
+            <div className="text-center mb-12">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                    Explore Blogs
+                </h1>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Read trending articles, tips, and stories curated just for you.
+                </p>
+            </div>
+
+            {/* Blog Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {blogs.length > 0 ? (
+                    blogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
+                ) : (
+                    <p className="col-span-full text-center text-gray-500">
+                        No blogs found.
+                    </p>
+                )}
+            </div>
         </div>
     );
 }

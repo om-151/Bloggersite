@@ -32,7 +32,7 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Logo + About */}
                     <div>
-                        <h2 className="text-gray-900 text-2xl font-bold mb-4">Blogger</h2>
+                        <h2 className="text-[#6438C0] text-2xl font-bold mb-4">Blogger</h2>
                         <p className="text-sm leading-relaxed">
                             Blogger is dedicated to delivering high-quality services and
                             solutions. We create innovative digital experiences that help you
@@ -57,29 +57,29 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="text-gray-900 text-lg font-semibold mb-4">Quick Links</h3>
+                        <h3 className="text-[#6438C0] text-lg font-semibold mb-4">Quick Links</h3>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-blue-600 transition">Home</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">About Us</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">Services</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">Contact</a></li>
+                            <li><a href="/" className="hover:text-purple-800 transition">Home</a></li>
+                            <li><a href="/blogs" className="hover:text-purple-800 transition">Blogs</a></li>
+                            <li><a href="/about" className="hover:text-purple-800 transition">About Us</a></li>
+                            <li><a href="/" className="hover:text-purple-800 transition">Contact</a></li>
                         </ul>
                     </div>
 
                     {/* Services */}
                     <div>
-                        <h3 className="text-gray-900 text-lg font-semibold mb-4">Services</h3>
+                        <h3 className="text-[#6438C0] text-lg font-semibold mb-4">Blog Categories</h3>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-blue-600 transition">Web Development</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">UI/UX Design</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">Digital Marketing</a></li>
-                            <li><a href="#" className="hover:text-blue-600 transition">SEO Services</a></li>
+                            <li><a href="/blogs/68a4a54439d0160c17e8f754" className="hover:text-purple-800 transition">AI</a></li>
+                            <li><a href="/blogs/68a4aa5c39d0160c17e8f7a6" className="hover:text-purple-800 transition">Politics</a></li>
+                            <li><a href="/blogs/68a4b0e739d0160c17e8f804" className="hover:text-purple-800 transition">Business</a></li>
+                            <li><a href="/blogs/68a4b26339d0160c17e8f828" className="hover:text-purple-800 transition">Science</a></li>
                         </ul>
                     </div>
 
                     {/* Newsletter */}
                     <div>
-                        <h3 className="text-gray-900 text-lg font-semibold mb-4">Subscribe</h3>
+                        <h3 className="text-[#6438C0] text-lg font-semibold mb-4">Subscribe</h3>
                         <p className="text-sm mb-3">
                             Subscribe to our newsletter for the latest updates.
                         </p>
@@ -87,11 +87,11 @@ const Footer = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#6438C0] text-gray-700"
                             />
                             <button
                                 type="submit"
-                                className="bg-blue-500 hover:bg-blue-600 px-4 py-2 text-sm rounded-r-md text-white transition"
+                                className="bg-[#6438C0] hover:bg-purple-800 px-4 py-2 text-sm rounded-r-md text-white transition cursor-pointer"
                             >
                                 Subscribe
                             </button>
@@ -104,8 +104,8 @@ const Footer = () => {
                     <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-4 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600">
                         <p>© {new Date().getFullYear()} Blogger. All rights reserved.</p>
                         <div className="mt-2 sm:mt-0 space-x-4">
-                            <a href="#" className="hover:text-blue-600 transition">Privacy Policy</a>
-                            <a href="#" className="hover:text-blue-600 transition">Terms of Service</a>
+                            <a href="#" className="hover:text-purple-800 transition">Privacy Policy</a>
+                            <a href="#" className="hover:text-purple-800 transition">Terms of Service</a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ const Footer = () => {
                 {isVisible && (
                     <button
                         onClick={scrollToTop}
-                        className="fixed bottom-6 right-6 p-3 rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 transition duration-30 cursor-pointer"
+                        className="fixed bottom-6 right-6 p-3 rounded-full bg-[#6438C0] text-white shadow-lg hover:bg-purple-800 transition duration-30 cursor-pointer"
                     >
                         <FaArrowUp size={20} />
                     </button>

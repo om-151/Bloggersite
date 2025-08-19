@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub, FaTwitter } from "react-icons/fa";
 import Signupbg from "../../assets/SignupBG.jpg"
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
     const [form, setForm] = useState({ fullname: "", email: "", password: "" });
@@ -47,17 +48,17 @@ export default function SignupPage() {
             const data = await res.json();
 
             if (!res.ok) {
-                alert(data.message || "Signup failed");
+                toast.error(data.message || "Something went wrong!");
                 return;
             }
 
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            alert("Signup successful!");
+            toast.success("Signup successful! Redirecting to home...");
             window.location.href = "/";
         } catch (err) {
-            alert("Something went wrong!");
+            toast.error("Failed to sign up. Please try again.");
             console.error(err);
         } finally {
             setSubmitting(false);

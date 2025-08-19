@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub, FaTwitter } from "react-icons/fa";
 import Loginbg from "../../assets/LoginBG.jpg"
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
     const [form, setForm] = useState({ email: "", password: "", remember: false });
@@ -45,17 +46,17 @@ export default function LoginPage() {
             const data = await res.json();
 
             if (!res.ok) {
-                alert(data.message || "Login failed");
+                toast.error(data.message || "Login failed");
                 return;
             }
 
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            alert("Login successful!");
+            toast.success("Login successful!");
             window.location.href = "/";
         } catch (err) {
-            alert("Something went wrong!");
+            toast.error("An error occurred. Please try again.");
             console.error(err);
         } finally {
             setSubmitting(false);

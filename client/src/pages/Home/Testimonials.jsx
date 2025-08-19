@@ -2,70 +2,71 @@ const testimonials = [
     {
         id: 1,
         name: "Aarav Sharma",
-        role: "Product Manager",
-        company: "TechNova",
+        role: "Content Writer",
+        company: "Freelancer",
         avatar:
             "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=400",
         quote:
-            "This platform drastically improved our workflow. The UI is clean and the DX is top-notch!",
+            "Publishing my articles here has been an amazing experience. The editor is smooth, and the blogs get great visibility. I’ve grown my audience much faster than I expected!",
         rating: 5,
     },
     {
         id: 2,
         name: "Priya Verma",
-        role: "Frontend Developer",
-        company: "CodeWorks",
+        role: "Travel Blogger",
+        company: "Wanderlust Diaries",
         avatar:
             "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=400",
         quote:
-            "Exactly what we needed — fast, reliable, and developer-friendly. Highly recommended!",
+            "I love how beautifully my stories are presented. The clean design makes my posts enjoyable to read, and the community engagement is just awesome!",
         rating: 5,
     },
     {
         id: 3,
         name: "Rahul Mehta",
-        role: "CTO",
-        company: "StackForge",
+        role: "Tech Enthusiast",
+        company: "GadgetSphere",
         avatar:
             "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400",
         quote:
-            "Great documentation and superb support. Shipping features is so much faster now.",
+            "This blog platform made it so easy to share my reviews and tutorials. The SEO features helped me rank higher on Google, which boosted my readers significantly.",
         rating: 4,
     },
     {
         id: 4,
         name: "Ananya Patel",
-        role: "Software Engineer",
-        company: "DevStudio",
+        role: "Food Blogger",
+        company: "Flavors of India",
         avatar:
             "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400",
         quote:
-            "The platform is seamless and makes collaboration across teams incredibly easy. A must-have tool!",
+            "I’ve tried other blogging platforms before, but this one stands out. The layout is elegant, images look stunning, and my readers keep complimenting the design!",
         rating: 5,
     },
     {
         id: 5,
         name: "Karan Malhotra",
-        role: "Backend Developer",
-        company: "CloudMatrix",
+        role: "Student Blogger",
+        company: "Campus Life Diaries",
         avatar:
             "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=400",
         quote:
-            "The performance improvements and developer experience are unmatched. Fantastic support team too!",
+            "As a beginner, I was nervous about blogging, but this site made it effortless. The interface is beginner-friendly, and I’ve connected with so many like-minded readers.",
         rating: 4,
     },
     {
         id: 6,
         name: "Riya Sen",
-        role: "Product Designer",
-        company: "PixelCraft",
+        role: "Lifestyle Blogger",
+        company: "Everyday Inspirations",
         avatar:
             "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400",
         quote:
-            "I love how intuitive and user-friendly this platform is. It helped us create beautiful experiences!",
+            "I absolutely love this blogging site! It’s simple, fast, and my blogs look professional without me having to worry about design. Highly recommended for anyone who loves writing!",
         rating: 5,
     },
 ];
+
 
 const Stars = ({ rating = 0 }) => {
     return (
@@ -91,7 +92,7 @@ const Stars = ({ rating = 0 }) => {
 
 const TestimonialCard = ({ t }) => {
     return (
-        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 transition hover:shadow-md">
+        <article className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200 hover:shadow-md hover:ring-[#6438C0] hover:scale-[1.01] transition-all duration-300 ease-in-out">
             <div className="flex items-center gap-4">
                 <img
                     src={t.avatar}
@@ -118,7 +119,7 @@ const TestimonialCard = ({ t }) => {
 
 const Testimonials = () => {
     return (
-        <section id="testimonials" className="bg-gray-100 py-20">
+        <section id="testimonials" className="bg-gray-100 pb-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mx-auto mb-12 max-w-2xl text-center">
