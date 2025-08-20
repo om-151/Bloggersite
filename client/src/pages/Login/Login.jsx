@@ -71,8 +71,8 @@ export default function LoginPage() {
             }}
         >
             <div className="w-full max-w-md backdrop-blur-lg bg-white/30 border border-white/40 rounded-2xl shadow-xl p-8">
-                <h1 className="text-3xl font-bold text-black text-center mb-2 drop-shadow-md">Welcome Back</h1>
-                <p className="text-black/50 text-center mb-6">Login to your account</p>
+                <h1 className="text-3xl font-bold text-[#6438C0] text-center mb-2 drop-shadow-md">Welcome Back</h1>
+                <p className="text-purple-800 font-light text-center mb-6">Login to your account</p>
 
                 <form onSubmit={onSubmit} className="space-y-5">
                     {/* Email */}
@@ -87,8 +87,8 @@ export default function LoginPage() {
                             value={form.email}
                             onChange={onChange}
                             className={`w-full rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 border 
-                            ${errors.email ? "border-red-400" : "border-gray-300 focus:border-blue-500"} 
-                            focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2.5`}
+                            ${errors.email ? "border-red-400" : "border-gray-300 focus:border-purple-800"} 
+                            focus:outline-none focus:ring-2 focus:ring-purple-300 px-4 py-2.5`}
                             placeholder="you@example.com"
                         />
                         {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
@@ -107,8 +107,8 @@ export default function LoginPage() {
                                 value={form.password}
                                 onChange={onChange}
                                 className={`w-full rounded-lg bg-white/60 text-gray-900 placeholder-gray-500 border 
-                                ${errors.password ? "border-red-400" : "border-gray-300 focus:border-blue-500"} 
-                                focus:outline-none focus:ring-2 focus:ring-blue-300 px-4 py-2.5 pr-12`}
+                                ${errors.password ? "border-red-400" : "border-gray-300 focus:border-purple-800"} 
+                                focus:outline-none focus:ring-2 focus:ring-purple-300 px-4 py-2.5 pr-12`}
                                 placeholder="••••••••"
                             />
                             <button
@@ -148,7 +148,7 @@ export default function LoginPage() {
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="w-full rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium py-2.5 transition focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                        className="w-full rounded-lg bg-[#6438C0] hover:bg-purple-800 text-white font-medium py-2.5 transition focus:outline-none focus:ring-2 focus:ring-purple-300 cursor-pointer"
                     >
                         {submitting ? "Signing in..." : "Sign In"}
                     </button>
@@ -170,7 +170,7 @@ export default function LoginPage() {
 
                 <p className="mt-8 text-center text-sm text-black">
                     Don&apos;t have an account?{" "}
-                    <Link to='/signup' className="text-blue-500 hover:underline cursor-pointer">
+                    <Link to='/signup' className="text-purple-800 hover:underline cursor-pointer">
                         Sign up
                     </Link>
                 </p>
@@ -183,7 +183,7 @@ function SocialButton({ icon, label, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="flex items-center justify-center gap-2 text-gray-900 bg-white/70 hover:bg-white border border-white/30 rounded-lg py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-blue-200 cursor-pointer"
+            className="flex items-center justify-center gap-2 text-gray-900 bg-white/70 hover:bg-white border border-white/30 rounded-lg py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-purple-200 cursor-pointer"
         >
             {icon} {label}
         </button>
