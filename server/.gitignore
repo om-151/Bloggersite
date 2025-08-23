@@ -1,6 +1,5 @@
 # Node.js modules
 node_modules/
-public/uploads/
 # Environment variables
 .env
 
